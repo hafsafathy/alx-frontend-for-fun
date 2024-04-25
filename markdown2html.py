@@ -20,6 +20,16 @@ def conv_md_to_html(input_file, output_file):
     '''
     Converts markdown file to HTML file
     '''
+
+    if len(sys.argv) < 3:
+        print('Usage: ./markdown2html.py README.md README.html',
+              file=sys.stderr)
+        exit(1)
+
+    if not os.path.isfile(sys.argv[1]):
+        print('Missing {}'.format(sys.argv[1]), file=sys.stderr)
+        exit(1)
+     
     with open(input_file, encoding='utf-8') as f:
         md_cont = f.readlines()
 
@@ -33,7 +43,7 @@ def conv_md_to_html(input_file, output_file):
             # Get the content of the heading
             h_content = match.group(2)
             # Append the HTML equivalent of the heading
-            html_cont.append(f'<h{h_level}>{h_content}</h{h_level}>\n')
+            html_cont.append(f"<h{h_level}>{h_content}</h{h_level}>\n")
         else:
             html_cont.append(line)
 
