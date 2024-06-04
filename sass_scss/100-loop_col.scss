@@ -1,4 +1,4 @@
-/* Creates classes with different width */
+/*  file that Creates classes with different width */
 
 @for $item from 1 through 4 {
   .col-#{$item} {
